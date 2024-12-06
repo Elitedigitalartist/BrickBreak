@@ -1,6 +1,6 @@
 //
 //  Class author:  David Sagoua
-//  Date created:  December 4, 2024
+//  Date created:  December 4th, 2024
 //  General description: This class holds the information for the paddle that the player controls in the Brick Break game
 //
 import java.awt.*;
