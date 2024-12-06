@@ -186,7 +186,10 @@ public class BrickBreak extends JPanel implements KeyListener, ActionListener {
 		if (play) {
 			checkCollision();
 			ball.move();
-			player.move();
+			if ((player.getX() < 600 && player.getVelocity() > 0) || (player.getX() > 0 && player.getVelocity() < 0)) {
+				player.move();
+			}
+			
 		}
 		revalidate();
 		repaint();
@@ -207,25 +210,29 @@ public class BrickBreak extends JPanel implements KeyListener, ActionListener {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			play = true;
 			if (player.getVelocity() == 0)
-				player.addVelocity(8);
-			else {
 				player.addVelocity(4);
+			else {
+				player.addVelocity(2);
 			}
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			play = true;
-			if (player.getVelocity() == 0)
-				player.addVelocity(-8);
-			else {
+			if (player.getVelocity() == 0) {
 				player.addVelocity(-4);
 			}
+			else {
+				player.addVelocity(-2);
+			}
+		} else {
+			player.setVelocity(0);
 		}
+
 
 		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 			play = false;
 			ball.setX(350);
 			ball.setY(450);
 			ball.setXVelocity(1);
-			ball.setYVelocity(-2);
+			ball.setYVelocity(2);
 			player.setX(310);
 			player.setVelocity(0);
 			score = 0;
